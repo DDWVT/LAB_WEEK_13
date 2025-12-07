@@ -2,8 +2,10 @@ package com.example.lab_week_13.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@JsonClass(generateAdapter = true)
+@Entity(tableName = "movies", primaryKeys = ["id"])
 data class Movie(
     val adult: Boolean = false,
     val backdrop_path: String? = null,
@@ -23,6 +25,8 @@ data class Movie(
     @field:Json(name = "vote_average")
     val voteAverage: Float = 0f,
     @field:Json(name = "vote_count")
-    val voteCount: Int = 0
+    val voteCount: Int = 0,
+    @Json(name = "backdrop_path") val backdropPath: String? = "",
+    @Json(name = "vote_average") val rating: Double?
 )
 
