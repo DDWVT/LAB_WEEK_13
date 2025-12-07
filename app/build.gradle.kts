@@ -1,11 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp").version("2.0.0-1.0.21")
     kotlin("kapt")
 }
 
+
 android {
-    namespace = "com.example.test_lab_week_12"
+    buildFeatures {
+        dataBinding = true
+    }
+
+    namespace = "com.example.lab_week_13"
     compileSdk = 36
 
     defaultConfig {
@@ -36,8 +42,8 @@ android {
     }
 }
 
-dependencies {
 
+dependencies {
     val moshiVersion = "1.15.1" // Tambahkan variabel versi
     val retrofitVersion = "2.9.0" // Pastikan versi Retrofit
 
