@@ -1,0 +1,38 @@
+Dewangga Vito Smaradhana - 00000107630
+1. Why is MVVM important? Which files represent Model, which files represent View, and which files represent ViewModel?
+Jawab: MVVM memungkinkan pemisahan antara UI (User Interface) dan logic. 
+Ini akan memudahkan proses desain ulang UI atau pembaruan logic tanpa mempengaruhi komponen lain.
+
+Model:
+- Movie.kt (Entity)
+- MovieDao.kt
+- MovieDatabase.kt
+- MovieRepository.kt
+- MovieService.kt
+
+View:
+- MainActivity.kt
+- activity_main.xml
+- movie_item.xml
+- RecyclerViewBinding.kt
+
+ViewModel:
+- MovieViewModel.kt
+
+2. In Part 1, you implemented Data Binding, why is this more efficient than using the normal method?
+Jawab: Kita dapat memanggil atribut seperti app:list di dalam XML dan mengisinya langsung dengan 
+LiveData atau StateFlow dari ViewModel. Hal ini mengurangi kode boilerplate di dalam Activity/Fragment.
+
+3. In Part 2, you implemented the Singleton Pattern, why is this important?
+Jawab: Pola Singleton memastikan bahwa hanya bisa ada 1 instance tunggal dari Database di seluruh thread 
+yang berbeda. Ini penting untuk security validitas data dan mencegah terjadinya Race Conditions.
+
+4. In Part 2 & 3, you implemented the Repository Pattern, why is this important?
+Jawab: Repository Pattern memastikan data dalam database lokal selalu up-to-date dengan data di layanan web.
+
+5. In part 3, you implemented the Worker Manager, is there another way to refresh your database with the latest 
+data other than using Worker?
+Jawab: 
+- Lifecycle Methods: Mengambil data setiap kali aplikasi dibuka dengan memanggil fungsi fetch di dalam onCreate, 
+onStart, atau onResume.
+- AlarmManager: Untuk menjadwalkan tugas pada waktu yang tepat.
