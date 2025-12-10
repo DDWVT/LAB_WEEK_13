@@ -13,9 +13,15 @@ class MovieApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // 1. Buat instance Moshi dengan KotlinJsonAdapterFactory
+        val moshi = com.squareup.moshi.Moshi.Builder()
+            .add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory())
+            .build()
+
+        // 2. Masukkan moshi ke dalam addConverterFactory
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi)) // Update baris ini
             .build()
 
         val movieService = retrofit.create(MovieService::class.java)
